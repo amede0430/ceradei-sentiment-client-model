@@ -1,9 +1,8 @@
 import pandas as pd
-import numpy as np
 df=pd.read_csv("dataset1.csv")
 df = df[['review_format', 'stars', 'review_lang']]
 dfm=df.dropna(subset=["review_format"])
-dfm.replace(["unknow",""],np.nan,inplace=True)
+dfm.replace({"unknown":None,"":None},inplace=True)
 df_final=dfm.dropna()
 print(df_final.columns)
 print(df_final.head)
